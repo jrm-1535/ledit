@@ -1,0 +1,48 @@
+Ledit is a very small line editor, keeping a history of previously entered lines
+and providing hooks for custom word completion and word skipping (stopping at
+ some specific separators). It also provides a minimum support for copy and
+paste.
+
+Browsing line history is done with UP and DOWN arrows, the last entered line
+being the first accessible by pressing UP arrow. Line history is reordered
+when an existing line is reused without any change in order to keep most
+recently used lines close together without repeating the same lines. History
+can be limited to a maximum number of lines (oldest line in history is dropped
+if a new line must be added), or unlimited.
+
+When a line was created or modified, it is temporarily saved if the history is
+browsed, in order to allow checking a previous command or copying an argument
+in a previous command and resuming editing the first line.
+
+Key mapping:
+
+ UP-ARROW           previously entered line in history
+ DOWN-ARROW         next entered line in history
+
+ PAGE-UP            jump to the least recently used line in history
+ PAGE-DOWN          jump to the most recently used line in history
+
+ LEFT-ARROW         previous character in current line
+ RIGHT-ARROW        next character in current line
+ HOME               first character in current line
+ END                after last character in current line
+
+ SHFT-LEFT-ARROW    select previous character in current line
+ SHFT-RIGHT-ARROW   select next character in current line
+
+ CTL-LEFT-ARROW     hop to the previous separator
+ CTL-RIGHT-ARROW    hop to the next separator
+
+ INSERT             toggle insert mode to overwrite mode
+
+ DELETE             delete character under cursor
+
+ BACKSPACE          delete previous character
+
+ TAB                invoke word completion at the cursor position
+
+ CTL-C              copy selected text to clipboard
+ CTL-V              paste clipboard to cursor location
+
+ CTL-E              erase characters from cursor to end of line
+ CTL-Q              empty line and quit
