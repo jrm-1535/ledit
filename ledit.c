@@ -610,19 +610,19 @@ static void move_up( line_t *line, move_t move )
     }
 
     history_t *cur = line->source;  // source of current text
-    if ( NULL == cur ) {            // first time moving up in history
+    if ( NULL == cur ) {            // if first time moving up in history
         line->source = line->tail;  // start from bottom (cannot be NULL here)
         if ( is_line_modified( line ) ) {   // if line is not empty,
             line_store( line, false );      // store text temporarily
         }
-    } else {                        // or move (at least) ONE_STEP in history
-        if ( NULL == cur->previous ) {
-            return;                 // if not possible, stay at current
-        }
+    } else {                        // else move (at least) ONE_STEP in history
         if ( is_line_modified( line ) ) {   // if text is modified
             line->source = line->tail;      // back to tail before storing
             line_store( line, false );      // temporarily modified text
         } else {                    // was not modified from source, keep going
+            if ( NULL == cur->previous ) {
+                return;             // if not possible, stay at current
+            }
             line->source = cur->previous;
         }
     }

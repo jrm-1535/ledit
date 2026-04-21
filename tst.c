@@ -22,7 +22,7 @@ extern int main( int argv, char **argc )
     printf("  Up or Down arrow to navigate in history\n");
     printf("  Page Up or Page Down to go to the last/first entry in history\n");
     printf("  Delete ot Backspace to remove the character under/before the cursor\n");
-    printf("  Insert to toggle from insert to replace mode");
+    printf("  Insert to toggle from insert to replace mode\n");
     printf("  Tab for auto completion (not implemented in this test)\n");
 
     line_t *line = new_line( "> ", NULL, NULL );
